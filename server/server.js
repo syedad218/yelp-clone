@@ -1,13 +1,11 @@
 require("dotenv").config();
 const express = require("express");
+const morgan = require("morgan");
 
 const app = express();
 
-// order is important for this middleware
-app.use((req, res, next) => {
-    console.log("middleware ran...");
-    next();
-});
+// order is important for middlewares
+app.use(morgan("dev"));
 
 const port = process.env.PORT || 8080;
 
